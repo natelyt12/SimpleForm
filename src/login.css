@@ -180,4 +180,7 @@ h1 {
     .info {
         width: 200px;
     }
+
+    .btn span{
+       line-height: 50px;
 }

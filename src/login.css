@@ -182,5 +182,6 @@ h1 {
     }
 
     .btn span{
+       height: 50px;
        line-height: 50px;
 }

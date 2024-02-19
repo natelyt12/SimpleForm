@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="./register.css">
+    <link rel="web icon" href="../asset/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+</head>
+
+<body>
+    <p class="info">Login form v1.2 by @phucthanhh</p>
+    <div class="container">
+        <div class="img"></div>
+        <form class="form">
+            <h1>Chào mừng!</h1>
+            <div id="input-usr">
+                <input type="text" name="username" id="usr-input" onblur="CheckUsr()" required>
+                <label for="email" class="label">Tên người dùng</label>
+                <i class="fi fi-rr-user"></i>
+            </div>
+            <p class="errorText">*Tên người dùng phải có ít nhất 4 ký tự, không quá 30 ký tự, không chứa dấu cách và ký
+                tự đặc biệt</p>
+            <div id="input-em">
+                <input type="text" name="email" id="email-input" onblur="CheckEmail()" required>
+                <label for="email" class="label">Email</label>
+                <i class="fi fi-rr-envelope"></i>
+            </div>
+            <p class="errorText">*Email không hợp lệ</p>
+            <p class="errorText">*Email đã được sử dụng</p>
+            <div id="input-pswd">
+                <input type="password" name="pass" id="pass-input" onblur="CheckPass()" required>
+                <label for="pass" class="label">Mật khẩu</label>
+                <i class="fi fi-rr-lock"></i>
+            </div>
+            <p class="errorText">*Mật khẩu phải bao gồm ít nhất 1 chữ viết hoa, thường, số và ký tự đặc biệt, dài tối
+                thiểu 8 ký tự, tối đa 30 ký tự, không có dấu cách</p>
+            <div id="input-repswd">
+                <input type="password" name="pass" id="repass-input" onblur="CheckRepass()" required>
+                <label for="pass" class="label">Nhập lại mật khẩu</label>
+                <i class="fi fi-rr-lock"></i>
+            </div>
+            <p class="errorText">*Mật khẩu bạn nhập lại không đúng</p>
+            <div id="verify">
+                <input type="checkbox" name="verify" id="messageCheckbox">
+                <label for="verify">
+                    Tôi đồng ý với <a href="">Điều khoản sử dụng</a> và <a href="">Chính sách bảo mật</a> chết tiệt mà
+                    tôi chả bao giờ đọc của ứng dụng
+                    này
+                </label>
+            </div>
+            <p class="errorText" style="margin-bottom: 20px;">*Bạn phải đồng ý với điều khoản sử dụng của chúng tôi</p>
+            <div class="button-container">
+                <a href="#" class="btn" onclick="validateForm()"><span id="btnText">Tạo tài khoản</span></a>
+            </div>
+            <p style="margin: 20px 0px 0px 0px;">Bạn đã có tài khoản?
+                <a href="../index.html" class="reglink">Đăng nhập
+                    <i class="fi fi-rr-angle-small-right"></i>
+                </a>
+            </p>
+        </form>
+    </div>
+</body>
+<script src="../src/register.js"></script>
+
+</html>
+
+
+<a href="./output.html"></a>

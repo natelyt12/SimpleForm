@@ -202,13 +202,15 @@ input:valid~label {
     }
 
     .info {
-        width: 200px;
+        width: 100%;
     }
 
     #verify {
         margin: 20px 0px 20px 0px;
     }
+
     .btn span {
         height: 50px;
         line-height: 50px;
+    }
 }

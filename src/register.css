@@ -203,6 +203,7 @@ input:valid~label {
 
     .info {
         width: 100%;
+        text-align: center;
     }
 
     #verify {

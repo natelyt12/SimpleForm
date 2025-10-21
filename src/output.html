@@ -42,7 +42,7 @@
             document.getElementById("em").innerText = getActiveEmail.Email
             document.getElementById("pass").innerText = "Đang ẩn"
 
-            if (getAcclist[0] != getActiveEmail.Email || getAcclist[0] == 'undefined') {
+            if (getAcclist != getActiveEmail.Email || getAcclist == 'undefined') {
                 getAcclist.unshift(getActiveEmail.Email)
                 console.log(getAcclist[0])
                 localStorage.setItem("accList", JSON.stringify(getAcclist))

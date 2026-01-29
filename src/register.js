@@ -1,13 +1,6 @@
 var emailReg = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
-var passReg = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
-
-// password must contain 1 number (0-9)
-// password must contain 1 uppercase letters
-// password must contain 1 lowercase letters
-// password must contain 1 non-alpha numeric number
-// password is 8-16 characters with no space
-
-var usrReg = /^(?=.{4,32}$)(?![_.-])(?!.*[_.]{2})[a-zA-Z0-9._-]+(?<![_.])$/
+var passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,30}$/
+var usrReg = /^[a-zA-Z0-9._-]{4,30}$/
 
 let getLabel = document.getElementsByClassName("label")
 let errorText = document.getElementsByClassName("errorText")
@@ -89,14 +82,29 @@ function validateForm() {
     let getUser = document.getElementById("usr-input").value
     let getEmail = document.getElementById("email-input").value
     let getPass = document.getElementById("pass-input").value
-    if (typeof (localStorage.getItem(document.getElementById("email-input").value)) == "string") {
+    let isTermsChecked = document.getElementById("messageCheckbox").checked
+
+    // Kiểm tra từng bước để đảm bảo thông báo lỗi chính xác
+    let isUsrValid = CheckUsr()
+    let isEmailValid = CheckEmail()
+    let isPassValid = CheckPass()
+    let isRepassValid = CheckRepass()
+
+    if (typeof (localStorage.getItem(getEmail)) == "string") {
         document.getElementById("input-em").style.border = "1px solid #FF3C3C"
         getLabel[1].style.color = "#FF3C3C"
         errorText[2].style.display = "block"
         errorText[1].style.display = "none"
         document.getElementsByClassName("fi fi-rr-envelope")[0].style.color = "#ff3c3c"
         return false
-    } else if (CheckUsr() == true && CheckEmail() == true && CheckPass() == true && CheckRepass() == true && document.getElementById("messageCheckbox").checked == true) {
+    }
+
+    if (isUsrValid && isEmailValid && isPassValid && isRepassValid) {
+        if (!isTermsChecked) {
+            errorText[5].style.display = "block"
+            return false
+        }
+        
         errorText[5].style.display = "none"
         let AccountContainer = {
             Username: getUser,
@@ -104,19 +112,12 @@ function validateForm() {
             Password: getPass
         }
         document.getElementById("btnText").innerHTML = "Đợi một chút..."
-        setTimeout((a) => {
+        setTimeout(() => {
             localStorage.setItem(getEmail, JSON.stringify(AccountContainer))
-            window.location = "../index.html"
+            window.location.href = "../index.html"
         }, 2000);
     } else {
-        console.log("cant")
-        CheckUsr()
-        CheckEmail()
-        CheckPass()
-        CheckRepass()
-        errorText[5].style.display = "block"
+        errorText[5].style.display = "none" // Ẩn lỗi điều khoản nếu các trường khác còn sai
         return false
     }
-
-
 }

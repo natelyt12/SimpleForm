@@ -69,3 +69,13 @@ function checkLogin() {
         }
     }, 2000);
 }
+
+function selfDestruct() {
+    if (confirm("Bạn có chắc chắn muốn xóa mọi dữ liệu và đóng trang web này không?")) {
+        localStorage.clear();
+        window.close();
+        setTimeout(() => {
+            window.location.href = "about:blank";
+        }, 100);
+    }
+}

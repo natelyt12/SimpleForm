@@ -141,7 +141,41 @@
             user-select: none;
             letter-spacing: 1px;
         }
+        .self-destruct-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #ff4d4d, #f43f5e);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .self-destruct-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5);
+        }
+
+        .self-destruct-btn i {
+            font-size: 1.2rem;
+        }
+
+        .self-destruct-btn:active {
+            transform: scale(0.9);
+        }
     </style>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 
 <body>
@@ -160,6 +194,17 @@
         function logout() {
             localStorage.setItem("active", "none");
             updateUI(); // Cập nhật giao diện ngay lập tức
+        }
+
+        function selfDestruct() {
+            if (confirm("Bạn có chắc chắn muốn xóa mọi dữ liệu và đóng trang web này không?")) {
+                localStorage.clear();
+                window.close();
+                // Fallback nếu window.close() bị trình duyệt chặn
+                setTimeout(() => {
+                    window.location.href = "about:blank";
+                }, 100);
+            }
         }
 
         function updateUI() {
@@ -216,6 +261,9 @@ ${JSON.stringify(userData, null, 4)}
         updateUI();
     </script>
     <p class="credit">Login form v1.2 by @phucthanhh</p>
+    <button class="self-destruct-btn" onclick="selfDestruct()" title="Tự hủy dữ liệu và đóng trang">
+        <i class="fi fi-rr-trash"></i>
+    </button>
 </body>
 
 </html>
